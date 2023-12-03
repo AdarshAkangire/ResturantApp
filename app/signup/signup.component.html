@@ -1,0 +1,61 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Marvellous Restaurent Portal Sign Up</h1>
+                    <h5>You can Sign Up here!</h5>
+                </div>
+                <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="mb-3">
+                      <label class="form-label">Email address</label>
+                      <input  formControlName="email" type="email" class="form-control" id="exampleInputEmail1"  placeholder="Email address">
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('email')?.errors?.['alphaNumericValidator']">
+                        It must contaian at least one uppercase letter,lowercase letter and digit
+                      </small>
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('email')?.errors?.['dotValidator']">
+                        before . there should be 1 symbol and after . there should be two symbols
+                      </small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input formControlName="name"  type="text" class="form-control" id="exampleInputEmail1"  placeholder="Name">
+                        <small  [style.color]="'red'" *ngIf="signupForm.get('name')?.errors?.['nameInvalid']">
+                          Name is invalid
+                        </small>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input  formControlName="mobile"  type="text" class="form-control" id="exampleInputEmail1"  placeholder="Phone">
+                        <small  [style.color]="'red'" *ngIf="signupForm.get('mobile')?.errors?.['DigitValidator']">
+                          Only digits are allowed
+                        </small>
+                        <small  [style.color]="'red'" *ngIf="signupForm.get('mobile')?.errors?.['LengthValidator']">
+                          Phone number should be of size 10
+                        </small>
+                      </div>
+                    <div class="mb-3">
+                      <label class="form-label">Password</label>
+                      <input formControlName="password"  type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('password')?.errors?.['PasswordLengthValidator']">
+                        password length must be 10
+                      </small>
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('password')?.errors?.['capitialValidator']">
+                        There must be at least one capitial letter
+                      </small>
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('password')?.errors?.['numericValidator']">
+                       There must be at least one digit
+                      </small>
+                      <small  [style.color]="'red'" *ngIf="signupForm.get('password')?.errors?.['specialCharacterValidator']">
+                        There must be at least one special character
+                      </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">sign up</button>
+                  </form>
+                  <a style="color: blue; margin-top: 10px;" routerLink="/login">Already User? Click to Login</a>
+
+            </div>
+        </div>
+    </div>
+</div>
